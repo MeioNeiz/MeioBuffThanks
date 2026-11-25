@@ -18,6 +18,7 @@ filled in.
 - Once per player every 15 minutes, so a rebuff doesn't spam them
 - A random wait of 2 to 6 seconds before each thanks, so it reads like a person
 - Skips short buffs, heals and your own group (each can be changed)
+- Your own lines for each of your characters, or one shared list
 - The /thank emote as well, or instead
 - Only players the game can name: in your group, targeted, under the mouse or with a
   nameplate showing
@@ -26,12 +27,8 @@ Settings: Esc > Options > AddOns > MeioBuffThanks, or `/buffthanks`.
 
 - `/buffthanks on|off`: switch it all on or off
 - `/buffthanks whisper on|off`, `emote on|off`, `group on|off`
-- `/buffthanks messages`: edit your thank you lines
+- `/buffthanks messages`: edit your thank you lines (tick "Own lines" for this character only)
 - `/buffthanks test`: show a random line, filled in, in your chat (sends nothing)
-
-## Coming soon
-
-- Your own thanks lines for each of your characters
 
 ## Install
 
