@@ -18,7 +18,7 @@
     {
       "file": "messages.png",
       "title": "Your own lines",
-      "description": "One line per message, {name} and {spell} filled in, picked at random"
+      "description": "One line per message, {name} and {spell} filled in, picked at random; tick Own lines for this character only"
     },
     {
       "file": "settings.png",
