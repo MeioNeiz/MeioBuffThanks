@@ -4,9 +4,9 @@ Someone buffs you, they get a thank you whisper, with a line picked at random fr
 
 For WoW Forever.
 
-![Three players buff you, and each gets a whisper: "Thanks for the Power Word: Fortitude
-and Divine Spirit, Ancuta!", "Ty Brom, much appreciated.", "Cheers for the Arcane Intellect,
-Cael."](docs/chat.png)
+![Three players buff you: before, just the buffs; with Meio Buff Thanks, each gets one
+whisper, "Thanks for the Power Word: Fortitude and Divine Spirit, Ancuta.", "Cheers for the
+Mark of the Wild, Brom.", "Thanks Cael, that'll come in handy."](docs/before-after.png)
 
 ## What it does
 
