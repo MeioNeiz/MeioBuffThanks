@@ -29,6 +29,10 @@ Settings: Esc > Options > AddOns > MeioBuffThanks, or `/buffthanks`.
 - `/buffthanks messages`: edit your thank you lines
 - `/buffthanks test`: show a random line, filled in, in your chat (sends nothing)
 
+## Coming soon
+
+- Your own thanks lines for each of your characters
+
 ## Install
 
 Use your addon manager (CurseForge, Wago), or unzip a GitHub release into
