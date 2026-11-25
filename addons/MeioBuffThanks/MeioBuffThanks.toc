@@ -5,6 +5,8 @@
 ## Author: MeioNeiz
 ## X-Website: https://github.com/MeioNeiz/MeioBuffThanks
 ## X-License: MIT
+## X-Curse-Project-ID: 1829459
+## X-Wago-ID: vNAWbRKo
 ## Category: Meio
 ## IconTexture: Interface\Icons\Spell_Holy_WordFortitude
 ## AddonCompartmentFunc: MeioBuffThanks_OnAddonCompartmentClick
