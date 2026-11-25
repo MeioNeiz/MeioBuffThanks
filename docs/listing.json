@@ -1,0 +1,29 @@
+{
+  "title": "Meio Buff Thanks",
+  "summary": "Thanks players who buff you with a whisper, picked from your own lines.",
+  "cfCategory": "Chat & Communication",
+  "cfExtra": [
+    "Buffs & Debuffs"
+  ],
+  "wagoCategories": [
+    "Chat & Communication",
+    "Buffs & Debuffs"
+  ],
+  "gallery": [
+    {
+      "file": "chat.png",
+      "title": "Thank you whispers",
+      "description": "Three players buff you; each gets one whisper, two buffs from one player in one line"
+    },
+    {
+      "file": "messages.png",
+      "title": "Your own lines",
+      "description": "One line per message, {name} and {spell} filled in, picked at random"
+    },
+    {
+      "file": "settings.png",
+      "title": "Settings",
+      "description": "Esc > Options > AddOns > MeioBuffThanks"
+    }
+  ]
+}

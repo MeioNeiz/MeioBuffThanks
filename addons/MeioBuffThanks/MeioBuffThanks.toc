@@ -1,0 +1,15 @@
+## Interface: 16001
+## Title: MeioBuffThanks
+## Notes: Thanks players who buff you, with a random line from your own list ({name} and {spell} filled in). /buffthanks
+## Version: 1.0.0
+## Author: MeioNeiz
+## X-Website: https://github.com/MeioNeiz/MeioBuffThanks
+## X-License: MIT
+## Category: Meio
+## IconTexture: Interface\Icons\Spell_Holy_WordFortitude
+## AddonCompartmentFunc: MeioBuffThanks_OnAddonCompartmentClick
+## SavedVariables: MeioBuffThanksDB
+
+MeioBuffThanks.lua
+Messages.lua
+Settings.lua
