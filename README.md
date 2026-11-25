@@ -29,6 +29,7 @@ Settings: Esc > Options > AddOns > MeioBuffThanks, or `/buffthanks`.
 - `/buffthanks whisper on|off`, `emote on|off`, `group on|off`
 - `/buffthanks messages`: edit your thank you lines (tick "Own lines" for this character only)
 - `/buffthanks test`: show a random line, filled in, in your chat (sends nothing)
+- `/buffthanks help`: list the commands
 
 ## Install
 

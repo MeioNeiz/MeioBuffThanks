@@ -167,7 +167,8 @@ end
 
 ------------------------------------------------------------------------------- commands
 
-local function OnOff(v) return v and "|cff40ff40on|r" or "|cffff4040off|r" end
+local function OnOff(v) return v and "|cff80ff80on|r" or "|cffff8080off|r" end
+local function Cmd(text) return "|cffffd100" .. text .. "|r" end
 
 local TOGGLES = {
     whisper = "Whisper a thank you line",
@@ -176,13 +177,18 @@ local TOGGLES = {
 }
 
 local function Help()
-    Say("thanks players who buff you. Settings: /buffthanks")
-    print("  /buffthanks on||off: all of it (now " .. OnOff(db.enabled) .. ")")
+    Say("thanks players who buff you, with a whisper or an emote")
+    local function Line(cmd, text) print("  " .. Cmd(cmd) .. " - " .. text) end
+    Line("/buffthanks on||off", "all of it (now " .. OnOff(db.enabled) .. ")")
     for _, key in ipairs({ "whisper", "emote", "group" }) do
-        print(("  /buffthanks %s on||off: %s (now %s)"):format(key, TOGGLES[key], OnOff(db[key])))
+        Line("/buffthanks " .. key .. " on||off",
+            TOGGLES[key] .. " (now " .. OnOff(db[key]) .. ")")
     end
-    print("  /buffthanks messages: edit your thank you lines (shared, or this character's own)")
-    print("  /buffthanks test: show a random line, filled in, here (sends nothing)")
+    Line("/buffthanks messages",
+        "edit your thank you lines (shared, or this character's own)")
+    Line("/buffthanks test", "show a random line, filled in, here (sends nothing)")
+    print("  Settings: Esc > Options > AddOns > MeioBuffThanks ("
+        .. Cmd("/buffthanks settings") .. ")")
 end
 
 function ns.Test(lines)
@@ -194,9 +200,9 @@ end
 SLASH_MEIOBUFFTHANKS1 = "/buffthanks"
 SlashCmdList.MEIOBUFFTHANKS = function(msg)
     local cmd, arg = strtrim(msg or ""):lower():match("^(%S*)%s*(.-)$")
-    if cmd == "" then
+    if cmd == "" or cmd == "settings" or cmd == "options" then
         if not ns.OpenSettings() then Help() end
-    elseif cmd == "help" then
+    elseif cmd == "help" or cmd == "?" then
         Help()
     elseif cmd == "on" or cmd == "off" then
         db.enabled = cmd == "on"
@@ -208,7 +214,11 @@ SlashCmdList.MEIOBUFFTHANKS = function(msg)
         ns.OpenMessages()
     elseif cmd == "test" then
         ns.Test()
+    elseif TOGGLES[cmd] then
+        Say(('"%s" needs on or off'):format(cmd))
+        Help()
     else
+        Say(('unknown command "%s"'):format(cmd))
         Help()
     end
 end

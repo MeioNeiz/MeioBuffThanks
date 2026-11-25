@@ -1,5 +1,11 @@
 # Meio Buff Thanks
 
+## 1.2.1
+
+- `/buffthanks help` lists one command per line and ends with where the settings are, like
+  the other Meio addons; `/buffthanks settings` opens them
+- A mistyped command now says so before the help
+
 ## 1.2.0
 
 - Lines per character: tick "Own lines for <name>" in the message editor and that
