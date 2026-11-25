@@ -14,6 +14,9 @@ When another player casts a long buff on you (Fortitude, Mark of the Wild, Arcan
 Kings...), it whispers them a thank you. Write your own lines; `{name}` and `{spell}` are
 filled in.
 
+![The messages window: your thank you lines, one per line, such as "Thanks for the {spell},
+{name}.", with Defaults, Test and Save](docs/messages.png)
+
 - Several buffs from one player: one whisper naming them all
 - Once per player every 15 minutes, so a rebuff doesn't spam them
 - A random wait of 2 to 6 seconds before each thanks, so it reads like a person
