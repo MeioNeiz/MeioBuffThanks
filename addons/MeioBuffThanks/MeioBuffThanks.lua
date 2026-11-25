@@ -10,7 +10,9 @@ local ADDON, ns = ...
 local issecret = issecretvalue or function() return false end
 local canaccess = canaccessvalue or function() return true end
 
-local GATHER = 1.5     -- seconds: several buffs from one caster make one thanks
+-- seconds before thanking: gathers several buffs from one caster into one line, and a
+-- random wait reads like a person typing (players mute instant, bot-like thanks)
+local WAIT_MIN, WAIT_MAX = 2, 6
 local RETRY, TRIES = 5, 6  -- chat lockdown (boss fights): wait up to 30 s, then drop it
 
 ns.DEFAULT_MESSAGES = {
@@ -130,7 +132,8 @@ local function OnAura(info)
             if not p then
                 p = { short = short, spells = {}, tries = 0 }
                 pending[full] = p
-                C_Timer.After(GATHER, function() Flush(full) end)
+                local wait = WAIT_MIN + math.random() * (WAIT_MAX - WAIT_MIN)
+                C_Timer.After(wait, function() Flush(full) end)
             end
             if not tContains(p.spells, spell) then table.insert(p.spells, spell) end
         end
