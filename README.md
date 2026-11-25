@@ -16,6 +16,7 @@ filled in.
 
 - Several buffs from one player: one whisper naming them all
 - Once per player every 15 minutes, so a rebuff doesn't spam them
+- A random wait of 2 to 6 seconds before each thanks, so it reads like a person
 - Skips short buffs, heals and your own group (each can be changed)
 - The /thank emote as well, or instead
 - Only players the game can name: in your group, targeted, under the mouse or with a
