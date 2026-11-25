@@ -1,8 +1,9 @@
--- The message editor: one line per message, saved into MeioBuffThanksDB.messages on Save.
+-- The message editor: one line per message. Save writes the shared list (MeioBuffThanksDB) or,
+-- with "own lines" ticked, this character's (MeioBuffThanksCharDB); unticking drops them.
 local _, ns = ...
 
-local WIDTH, HEIGHT = 480, 320
-local window, edit
+local WIDTH, HEIGHT = 480, 344
+local window, edit, own
 
 local function Lines(text)
     local out = {}
@@ -55,7 +56,30 @@ local function Create()
         .. "what they cast.")
 
     window.Inset:ClearAllPoints()
-    window.Inset:SetPoint("TOPLEFT", 8, -58)
+    own = CreateFrame("CheckButton", nil, window, "UICheckButtonTemplate")
+    own:SetSize(24, 24)
+    own:SetPoint("TOPLEFT", 10, -52)
+    local ownText = own:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    ownText:SetPoint("LEFT", own, "RIGHT", 2, 0)
+    own.label = ownText
+    own:SetScript("OnClick", function(self)
+        -- the box keeps its text either way: ticking starts this character's list from it
+        if not self:GetChecked() and MeioBuffThanksCharDB.messages then
+            Load(ns.db.messages)
+        end
+    end)
+    own:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_TOP")
+        GameTooltip:SetText(self.label:GetText())
+        GameTooltip:AddLine("Ticked: these lines are used only on this character; your other "
+            .. "characters keep the shared list. Unticked: this character uses the shared list "
+            .. "(Save drops its own lines).", 1, 1, 1, true)
+        GameTooltip:Show()
+    end)
+    own:SetScript("OnLeave", GameTooltip_Hide)
+    window.own = own
+
+    window.Inset:SetPoint("TOPLEFT", 8, -80)
     window.Inset:SetPoint("BOTTOMRIGHT", -8, 34)
 
     local scroll = CreateFrame("ScrollFrame", nil, window.Inset, "UIPanelScrollFrameTemplate")
@@ -73,8 +97,15 @@ local function Create()
     window.edit = edit
 
     local save = Button("Save", "Keep these lines.", function()
-        ns.db.messages = Lines(edit:GetText())
-        ns.Say(("%d messages saved."):format(#ns.db.messages))
+        local lines = Lines(edit:GetText())
+        if own:GetChecked() then
+            MeioBuffThanksCharDB.messages = lines
+            ns.Say(("%d messages saved for %s only."):format(#lines, UnitName("player")))
+        else
+            MeioBuffThanksCharDB.messages = nil
+            ns.db.messages = lines
+            ns.Say(("%d shared messages saved."):format(#lines))
+        end
         window:Hide()
     end)
     save:SetPoint("BOTTOMRIGHT", -10, 7)
@@ -85,7 +116,11 @@ local function Create()
         .. "them).", function() Load(ns.DEFAULT_MESSAGES) end)
     defaults:SetPoint("BOTTOMLEFT", 10, 7)
 
-    window:SetScript("OnShow", function() Load(ns.db.messages) end)
+    window:SetScript("OnShow", function()
+        own.label:SetText(("Own lines for %s"):format(UnitName("player") or "this character"))
+        own:SetChecked(MeioBuffThanksCharDB.messages ~= nil)
+        Load(ns.Messages())
+    end)
     window:Hide()
 end
 

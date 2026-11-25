@@ -75,9 +75,15 @@ function ns.Fill(line, name, spell)
     end))
 end
 
+-- this character's own lines if it has any, else the shared ones
+function ns.Messages()
+    local own = MeioBuffThanksCharDB.messages
+    return own or db.messages
+end
+
 -- never the same line twice running
 function ns.PickLine(lines)
-    lines = lines or db.messages
+    lines = lines or ns.Messages()
     if #lines <= 1 then return lines[1] end
     local i
     repeat i = math.random(#lines) until i ~= lastLine
@@ -154,6 +160,8 @@ local function Init()
     if type(db.messages) ~= "table" then db.messages = CopyTable(ns.DEFAULT_MESSAGES) end
     db.thanked = db.thanked or {}
     ns.db = db
+    MeioBuffThanksCharDB = MeioBuffThanksCharDB or {}
+    if type(MeioBuffThanksCharDB.messages) ~= "table" then MeioBuffThanksCharDB.messages = nil end
     Prune()
 end
 
@@ -173,7 +181,7 @@ local function Help()
     for _, key in ipairs({ "whisper", "emote", "group" }) do
         print(("  /buffthanks %s on||off: %s (now %s)"):format(key, TOGGLES[key], OnOff(db[key])))
     end
-    print("  /buffthanks messages: edit your thank you lines")
+    print("  /buffthanks messages: edit your thank you lines (shared, or this character's own)")
     print("  /buffthanks test: show a random line, filled in, here (sends nothing)")
 end
 
