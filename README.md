@@ -1,6 +1,7 @@
 # Meio Buff Thanks
 
-Someone buffs you, they get a thank you whisper, with a line picked at random from your own list.
+A stranger buffs you and is gone before you can type: Meio Buff Thanks whispers one of your
+own thank-you lines.
 
 For WoW Forever.
 

@@ -1,6 +1,6 @@
 {
   "title": "Meio Buff Thanks",
-  "summary": "Thanks players who buff you with a whisper, picked from your own lines.",
+  "summary": "Whispers a thank you to players who buff you, from lines you write.",
   "cfCategory": "Chat & Communication",
   "cfExtra": [
     "Buffs & Debuffs"
