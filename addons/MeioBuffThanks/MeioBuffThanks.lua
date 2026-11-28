@@ -63,6 +63,23 @@ local function Caster(a)
     return unit
 end
 
+-- {spell} as players type it: "Thanks for the Fort". English names; others stay whole.
+local SHORT = {
+    ["Power Word: Fortitude"] = "Fort", ["Prayer of Fortitude"] = "Fort",
+    ["Divine Spirit"] = "Spirit", ["Prayer of Spirit"] = "Spirit",
+    ["Shadow Protection"] = "Shadow Prot", ["Prayer of Shadow Protection"] = "Shadow Prot",
+    ["Arcane Intellect"] = "Int", ["Arcane Brilliance"] = "Int",
+    ["Mark of the Wild"] = "Mark", ["Gift of the Wild"] = "Mark",
+    ["Amplify Magic"] = "Amplify", ["Dampen Magic"] = "Dampen",
+    Salvation = "Salv",
+}
+function ns.Short(spell)
+    if SHORT[spell] then return SHORT[spell] end
+    local blessing = spell:match("^Greater Blessing of (.+)$")
+        or spell:match("^Blessing of (.+)$")
+    return blessing and (SHORT[blessing] or blessing) or spell
+end
+
 local function Join(list)
     if #list == 1 then return list[1] end
     return table.concat(list, ", ", 1, #list - 1) .. " and " .. list[#list]
@@ -133,7 +150,7 @@ local function OnAura(info)
         local full, short
         if unit then full, short = Names(unit) end
         if full and not OnCooldown(full) then
-            local spell = Readable(a.name) and a.name or "buff"
+            local spell = Readable(a.name) and ns.Short(a.name) or "buff"
             local p = pending[full]
             if not p then
                 p = { short = short, spells = {}, tries = 0 }
@@ -194,7 +211,7 @@ end
 function ns.Test(lines)
     local line = ns.PickLine(lines)
     if not line then Say("no messages yet: /buffthanks messages") return end
-    Say("would whisper: " .. ns.Fill(line, "Ancuta", "Power Word: Fortitude"))
+    Say("would whisper: " .. ns.Fill(line, "Ancuta", ns.Short("Power Word: Fortitude")))
 end
 
 SLASH_MEIOBUFFTHANKS1 = "/buffthanks"

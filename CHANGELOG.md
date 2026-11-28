@@ -1,5 +1,11 @@
 # Meio Buff Thanks
 
+## 1.2.2
+
+- {spell} in your thanks now says the spell the way players type it: "Thanks for the Fort",
+  Int, Mark, Kings
+- Settings: clearer names for the buff length and repeat sliders
+
 ## 1.2.1
 
 - `/buffthanks help` lists one command per line and ends with where the settings are, like

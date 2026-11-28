@@ -43,9 +43,9 @@ local function Register()
     Checkbox("group", "Thank your group", "Off: only players outside your "
         .. "group, so a party buffing each other isn't flooded with whispers. "
         .. "/buffthanks group on||off", false)
-    Slider("minMinutes", "Buffs lasting at least", 5, 1, 30, 1, "Shorter buffs are ignored. "
+    Slider("minMinutes", "Buffs of at least", 5, 1, 30, 1, "Shorter buffs are ignored. "
         .. "5 minutes skips Battle Shout and short procs but keeps Blessings.")
-    Slider("cooldown", "Once per player per", 15, 1, 60, 1, "A player who buffs you again "
+    Slider("cooldown", "Thank again after", 15, 1, 60, 1, "A player who buffs you again "
         .. "within this time isn't thanked again.")
 
     if CreateSettingsButtonInitializer then

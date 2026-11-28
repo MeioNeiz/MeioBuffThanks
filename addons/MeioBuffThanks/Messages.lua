@@ -53,7 +53,7 @@ local function Create()
     hint:SetPoint("RIGHT", -14, 0)
     hint:SetJustifyH("LEFT")
     hint:SetText("One message per line, picked at random. {name} is who buffed you, {spell} "
-        .. "what they cast.")
+        .. "what they cast, short (Fort, Int, Kings).")
 
     window.Inset:ClearAllPoints()
     own = CreateFrame("CheckButton", nil, window, "UICheckButtonTemplate")

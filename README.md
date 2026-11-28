@@ -13,7 +13,7 @@ Mark of the Wild, Brom.", "Thanks Cael, that'll come in handy."](docs/before-aft
 
 When another player casts a long buff on you (Fortitude, Mark of the Wild, Arcane Intellect,
 Kings...), it whispers them a thank you. Write your own lines; `{name}` and `{spell}` are
-filled in.
+filled in, the spell the way players type it (Fort, Int, Kings).
 
 ![The messages window: your thank you lines, one per line, such as "Thanks for the {spell},
 {name}.", with Defaults, Test and Save](docs/messages.png)
